@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComercialTDSDesk", "ComercialTDSDesk\ComercialTDSDesk.csproj", "{32DDA02C-5F09-42DF-803B-2BEFF78C32EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComercialTDSClass", "ComercialTDSClass\ComercialTDSClass.csproj", "{BC3A4E56-7555-4B03-BC24-A5C942695045}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32DDA02C-5F09-42DF-803B-2BEFF78C32EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32DDA02C-5F09-42DF-803B-2BEFF78C32EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32DDA02C-5F09-42DF-803B-2BEFF78C32EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32DDA02C-5F09-42DF-803B-2BEFF78C32EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC3A4E56-7555-4B03-BC24-A5C942695045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC3A4E56-7555-4B03-BC24-A5C942695045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC3A4E56-7555-4B03-BC24-A5C942695045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC3A4E56-7555-4B03-BC24-A5C942695045}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E48B4FB-46F9-47D0-B644-808D06F66E7E}
+	EndGlobalSection
+EndGlobal
