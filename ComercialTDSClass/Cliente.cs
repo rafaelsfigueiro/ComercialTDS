@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ComercialTDSClass;
-public class Cliente
+ class Cliente
 {
-   
- 
- 
+public List<Endereco> Enderecos { get; set; } = new();
+
+
+
 }
