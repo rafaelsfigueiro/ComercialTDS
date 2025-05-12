@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ComercialTDSClass
+namespace ComercialTDSClass;
+public class Cliente
 {
-    class Cliente
-    {
-    }
+   
+ 
+ 
 }
