@@ -98,7 +98,7 @@ namespace ComercialTDSClass
             cmd.Connection.Close();
         }
 
-        public void Alterar()
+        public void Update()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
