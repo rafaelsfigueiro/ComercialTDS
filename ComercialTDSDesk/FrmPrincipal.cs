@@ -36,5 +36,22 @@ namespace ComercialTDSDesk
             frmLogin.ShowDialog();
             tsslUsuarioLogado.Text = Program.UsuarioLogado.Nome + " - " + Program.UsuarioLogado.Nivel.Nome;
         }
+
+        private void clientePrToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nivéisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmNivel frmNivel = new();
+            frmNivel.MdiParent = this;
+            frmNivel.Show();
+        }
     }
 }

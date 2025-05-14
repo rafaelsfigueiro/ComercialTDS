@@ -174,6 +174,7 @@ namespace ComercialTDSClass
             cmd.CommandText = $"update usuarios set senha = md5('{senha}') where email = '{email}'";
             
             return cmd.ExecuteNonQuery()>0? true: false;
+
         }
 
 
