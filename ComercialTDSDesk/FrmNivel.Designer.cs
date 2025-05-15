@@ -61,15 +61,18 @@
             btnCancelar.TabIndex = 1;
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnEditar
             // 
+            btnEditar.Enabled = false;
             btnEditar.Location = new Point(246, 222);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(75, 23);
             btnEditar.TabIndex = 2;
             btnEditar.Text = "&Editar";
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // txtID
             // 
@@ -89,7 +92,7 @@
             // 
             // txtSigla
             // 
-            txtSigla.Location = new Point(156, 129);
+            txtSigla.Location = new Point(156, 123);
             txtSigla.Name = "txtSigla";
             txtSigla.Size = new Size(246, 23);
             txtSigla.TabIndex = 5;
@@ -125,7 +128,7 @@
             DgvNiveis.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DgvNiveis.Size = new Size(280, 180);
             DgvNiveis.TabIndex = 9;
-            DgvNiveis.CellContentClick += DgvNiveis_CellContentClick;
+            DgvNiveis.CellDoubleClick += DgvNiveis_CellDoubleClick;
             // 
             // clnID
             // 

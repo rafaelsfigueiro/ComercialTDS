@@ -62,17 +62,19 @@
             // 
             txtEmail.Location = new Point(247, 170);
             txtEmail.Name = "txtEmail";
+            txtEmail.PlaceholderText = "Email";
             txtEmail.Size = new Size(220, 23);
             txtEmail.TabIndex = 2;
-            txtEmail.Text = "Email";
+            txtEmail.Text = "rafa@rafa";
             // 
             // txtSenha
             // 
             txtSenha.Location = new Point(247, 210);
             txtSenha.Name = "txtSenha";
+            txtSenha.PlaceholderText = "Senha";
             txtSenha.Size = new Size(220, 23);
             txtSenha.TabIndex = 3;
-            txtSenha.Text = "Senha";
+            txtSenha.Text = "123";
             txtSenha.UseSystemPasswordChar = true;
             txtSenha.TextChanged += textBox2_TextChanged;
             // 
