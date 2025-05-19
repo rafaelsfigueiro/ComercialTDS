@@ -105,31 +105,32 @@
             // incluirToolStripMenuItem
             // 
             incluirToolStripMenuItem.Name = "incluirToolStripMenuItem";
-            incluirToolStripMenuItem.Size = new Size(134, 22);
+            incluirToolStripMenuItem.Size = new Size(180, 22);
             incluirToolStripMenuItem.Text = "&Incluir";
+            incluirToolStripMenuItem.Click += incluirToolStripMenuItem_Click;
             // 
             // listarToolStripMenuItem
             // 
             listarToolStripMenuItem.Name = "listarToolStripMenuItem";
-            listarToolStripMenuItem.Size = new Size(134, 22);
+            listarToolStripMenuItem.Size = new Size(180, 22);
             listarToolStripMenuItem.Text = "&Listar";
             // 
             // fornecedorToolStripMenuItem
             // 
             fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
-            fornecedorToolStripMenuItem.Size = new Size(134, 22);
+            fornecedorToolStripMenuItem.Size = new Size(180, 22);
             fornecedorToolStripMenuItem.Text = "&Fornecedor";
             // 
             // categoriaToolStripMenuItem
             // 
             categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
-            categoriaToolStripMenuItem.Size = new Size(134, 22);
+            categoriaToolStripMenuItem.Size = new Size(180, 22);
             categoriaToolStripMenuItem.Text = "&Categoria";
             // 
             // estoqueToolStripMenuItem
             // 
             estoqueToolStripMenuItem.Name = "estoqueToolStripMenuItem";
-            estoqueToolStripMenuItem.Size = new Size(134, 22);
+            estoqueToolStripMenuItem.Size = new Size(180, 22);
             estoqueToolStripMenuItem.Text = "&Estoque";
             // 
             // categoriasToolStripMenuItem
@@ -148,13 +149,13 @@
             // incluirToolStripMenuItem2
             // 
             incluirToolStripMenuItem2.Name = "incluirToolStripMenuItem2";
-            incluirToolStripMenuItem2.Size = new Size(180, 22);
+            incluirToolStripMenuItem2.Size = new Size(107, 22);
             incluirToolStripMenuItem2.Text = "&Incluir";
             // 
             // listarToolStripMenuItem2
             // 
             listarToolStripMenuItem2.Name = "listarToolStripMenuItem2";
-            listarToolStripMenuItem2.Size = new Size(180, 22);
+            listarToolStripMenuItem2.Size = new Size(107, 22);
             listarToolStripMenuItem2.Text = "&Listar";
             // 
             // usuariosToolStripMenuItem
@@ -167,20 +168,20 @@
             // incluirToolStripMenuItem1
             // 
             incluirToolStripMenuItem1.Name = "incluirToolStripMenuItem1";
-            incluirToolStripMenuItem1.Size = new Size(180, 22);
+            incluirToolStripMenuItem1.Size = new Size(107, 22);
             incluirToolStripMenuItem1.Text = "&Incluir";
             incluirToolStripMenuItem1.Click += incluirToolStripMenuItem1_Click;
             // 
             // listarToolStripMenuItem1
             // 
             listarToolStripMenuItem1.Name = "listarToolStripMenuItem1";
-            listarToolStripMenuItem1.Size = new Size(180, 22);
+            listarToolStripMenuItem1.Size = new Size(107, 22);
             listarToolStripMenuItem1.Text = "&Listar";
             // 
             // nivéisToolStripMenuItem
             // 
             nivéisToolStripMenuItem.Name = "nivéisToolStripMenuItem";
-            nivéisToolStripMenuItem.Size = new Size(180, 22);
+            nivéisToolStripMenuItem.Size = new Size(107, 22);
             nivéisToolStripMenuItem.Text = "&Nivéis";
             nivéisToolStripMenuItem.Click += nivéisToolStripMenuItem_Click;
             // 
@@ -195,7 +196,7 @@
             // 
             pedidosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { novoToolStripMenuItem, consultarToolStripMenuItem, listarToolStripMenuItem3 });
             pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            pedidosToolStripMenuItem.Size = new Size(180, 22);
+            pedidosToolStripMenuItem.Size = new Size(116, 22);
             pedidosToolStripMenuItem.Text = "&Pedidos";
             pedidosToolStripMenuItem.Click += pedidosToolStripMenuItem_Click;
             // 
