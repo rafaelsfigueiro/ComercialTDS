@@ -48,7 +48,7 @@ namespace ComercialTDSDesk
                 categoria.ObterPorID(),
                 (double)nudEstoqueMinimo.Value,
                 (double)nudClasseDesconto.Value,
-                ms,
+                ms,  // resolver esse e incluir comando no form conforme git
 
 
                 );
