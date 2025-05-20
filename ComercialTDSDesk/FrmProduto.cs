@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComercialTDSClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,12 +40,12 @@ namespace ComercialTDSDesk
             imgBytes = ms.ToArray();
 
          
-             produto = new(
+             Produto = new(
                 txtCodBarras.Text,
                 txtDescricao.Text,
                 (Double)nudValorUnit.Value,
                 txtUnidadeVenda.Text,
-                Categoria.ObterPorID(Convert.ToInt32(cmbCategoria.SelectedValue)),
+               Categoria.ObterPorId(Convert.ToInt32(cmbCategoria.SelectedValue)),
                 (double)nudEstoqueMinimo.Value,
                 (double)nudClasseDesconto.Value,
                 imgBytes
@@ -53,7 +54,7 @@ namespace ComercialTDSDesk
 
             produto.Inserir();
             if (produto.> 0)
-                MessageBox.Show($"Produto {produto.id}Gravado com Sucesso!");
+                MessageBox.Show($"Produto {produto.Id}Gravado com Sucesso!");
         }
     }
 }

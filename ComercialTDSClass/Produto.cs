@@ -26,7 +26,7 @@ public class Produto
         public DateTime DataCard { get; set; }
 
         public  bool Descontinuado { get; set; }
-        public Produto() 
+        public Produto()  // construtor vazio
         {
             Categoria = new();
         }
