@@ -16,6 +16,19 @@ namespace ComercialTDSDesk
         {
             InitializeComponent();
         }
+        private void AssociaPanel(Form form)
+        {
+
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.MaximizeBox = true;
+            form.AutoSize = true;
+            form.Size = pnlCentral.Size;
+            pnlCentral.Controls.Clear();
+            pnlCentral.Controls.Add(form);
+            form.Show();
+            pnlCentral.Visible = true;
+        }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {

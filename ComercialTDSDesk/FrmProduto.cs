@@ -33,24 +33,22 @@ namespace ComercialTDSDesk
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            byte[] imgBytes;
             MemoryStream ms = new();
+            picImagem.Image.Save(ms, picImagem.Image.RawFormat);
+            imgBytes = ms.ToArray();
 
-            using ( ms )
-            {
-                picImagem.Image.Save(ms, picImagem.Image.RawFormat);
-
-            }
-            FrmProduto produto = new(
-            txtCodBarras.Text,
-            txtDescricao.Text,
-            (Double)nudValorUnit.Value,
+         
+             produto = new(
+                txtCodBarras.Text,
+                txtDescricao.Text,
+                (Double)nudValorUnit.Value,
                 txtUnidadeVenda.Text,
-                categoria.ObterPorID(),
+                Categoria.ObterPorID(Convert.ToInt32(cmbCategoria.SelectedValue)),
                 (double)nudEstoqueMinimo.Value,
                 (double)nudClasseDesconto.Value,
-                ms,  // resolver esse e incluir comando no form conforme git
-
-
+                imgBytes
+               
                 );
 
             produto.Inserir();

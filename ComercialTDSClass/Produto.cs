@@ -9,7 +9,7 @@ using ZstdSharp.Unsafe;
 
 namespace ComercialTDSClass
 {
-    class Produto
+public class Produto
     {
 
 
@@ -21,7 +21,7 @@ namespace ComercialTDSClass
         public Categoria? Categoria { get; set; }
         public double? EstoqueMinimo { get; set; }
         public double? ClasseDesconto { get; set; }
-        public Stream Imagem { get; set; }       
+        public byte[] Imagem { get; set; }       
         
         public DateTime DataCard { get; set; }
 
@@ -33,7 +33,7 @@ namespace ComercialTDSClass
        
 
 
-        public Produto(int id, string? codBarras, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double? estoqueMinimo, double? classedesconto, Stream imagem, DateTime dataCard, bool descontinuado)
+        public Produto(int id, string? codBarras, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double? estoqueMinimo, double? classedesconto, byte[] imagem, DateTime dataCard, bool descontinuado)
         {
             Id = id;
             CodBarras = codBarras;
@@ -48,7 +48,7 @@ namespace ComercialTDSClass
             Descontinuado = descontinuado;
         }
 
-        public Produto( string? codBarras, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double? estoqueMinimo, double? classedesconto, Stream imagem, DateTime dataCard, bool descontinuado)
+        public Produto( string? codBarras, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double? estoqueMinimo, double? classedesconto, byte[] imagem, DateTime dataCard, bool descontinuado)
         {
             
             CodBarras = codBarras;
@@ -62,7 +62,7 @@ namespace ComercialTDSClass
             DataCard = dataCard;
             Descontinuado = descontinuado;
         }
-        public Produto ( string? codBarras, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double? estoqueMinimo, double? classedesconto, Stream imagem)
+        public Produto ( string? codBarras, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double? estoqueMinimo, double? classedesconto, byte[] imagem)
         {
           
             CodBarras = codBarras;
@@ -129,7 +129,7 @@ namespace ComercialTDSClass
                     Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
-                    dr.GetStream(8),
+                    (byte[])dr.GetValue(8),
                     dr.GetDateTime(9),
                     dr.GetBoolean(10)
                     );
@@ -155,7 +155,7 @@ namespace ComercialTDSClass
                     Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
-                    dr.GetStream(8),
+                    (byte[])dr.GetValue(8),
                     dr.GetDateTime(9),
                     dr.GetBoolean(10)
                     ));
