@@ -19,12 +19,10 @@ public class Produto
         public double? ValorUnit { get; set; }
         public string? UnidadeVenda { get; set; }
         public Categoria? Categoria { get; set; }
-        public double? EstoqueMinimo { get; set; }
-        public double? ClasseDesconto { get; set; }
-        public byte[] Imagem { get; set; }       
-        
+        public double EstoqueMinimo { get; set; }
+        public double ClasseDesconto { get; set; }
+        public byte[] Imagem { get; set; }               
         public DateTime DataCard { get; set; }
-
         public  bool Descontinuado { get; set; }
         public Produto()  // construtor vazio
         {
@@ -33,7 +31,7 @@ public class Produto
        
 
 
-        public Produto(int id, string? codBarras, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double? estoqueMinimo, double? classedesconto, byte[] imagem, DateTime dataCard, bool descontinuado)
+        public Produto(int id, string? codBarras, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classedesconto, byte[] imagem, DateTime dataCard, bool descontinuado)
         {
             Id = id;
             CodBarras = codBarras;
@@ -48,7 +46,7 @@ public class Produto
             Descontinuado = descontinuado;
         }
 
-        public Produto( string? codBarras, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double? estoqueMinimo, double? classedesconto, byte[] imagem, DateTime dataCard, bool descontinuado)
+        public Produto( string? codBarras, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classedesconto, byte[] imagem, DateTime dataCard, bool descontinuado)
         {
             
             CodBarras = codBarras;
@@ -62,7 +60,7 @@ public class Produto
             DataCard = dataCard;
             Descontinuado = descontinuado;
         }
-        public Produto ( string? codBarras, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double? estoqueMinimo, double? classedesconto, byte[] imagem)
+        public Produto ( string? codBarras, string? descricao, double? valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classedesconto, byte[] imagem)
         {
           
             CodBarras = codBarras;
@@ -129,7 +127,7 @@ public class Produto
                     Categoria.ObterPorId(dr.GetInt32(5)),
                     dr.GetDouble(6),
                     dr.GetDouble(7),
-                    (byte[])dr.GetValue(8),
+                    (byte[])dr.GetValue(8), // cast objeto para matrix byte[]
                     dr.GetDateTime(9),
                     dr.GetBoolean(10)
                     );
