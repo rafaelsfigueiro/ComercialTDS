@@ -30,12 +30,12 @@ namespace ComercialTDSDesk
                     if (categoria.Id > 0)
                     {
                         MessageBox.Show($"Categoria cadastrado com sucesso ");
-                       
+
                     }
                 }
                 else
                 {
-                   Categoria categoria = new(int.Parse(txtID.Text), txtNome.Text, txtSigla.Text);
+                    Categoria categoria = new(int.Parse(txtID.Text), txtNome.Text, txtSigla.Text);
                     if (categoria.Atualizar())
                     {
                         MessageBox.Show($"Cadastrado atualizado com sucesso ");
@@ -45,7 +45,12 @@ namespace ComercialTDSDesk
                 }
 
             }
-          
+
+        }
+
+        private void FrmCategoria_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

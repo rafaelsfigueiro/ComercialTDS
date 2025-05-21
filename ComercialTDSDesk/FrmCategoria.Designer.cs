@@ -122,6 +122,7 @@
             Controls.Add(btnGravar);
             Name = "FrmCategoria";
             Text = "FrmCategoria";
+            Load += FrmCategoria_Load;
             ResumeLayout(false);
             PerformLayout();
         }

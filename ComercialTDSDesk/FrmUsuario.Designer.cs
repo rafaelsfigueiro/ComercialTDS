@@ -30,22 +30,22 @@
         {
             label3 = new Label();
             label4 = new Label();
-            txtSigla = new TextBox();
+            txtEmail = new TextBox();
             txtNome = new TextBox();
             txtID = new TextBox();
             btnEditar = new Button();
             btnCancelar = new Button();
             btnGravar = new Button();
-            textBox1 = new TextBox();
+            txtSenha = new TextBox();
             label1 = new Label();
-            textBox2 = new TextBox();
             label2 = new Label();
-            DgvNiveis = new DataGridView();
+            dgvUsuarios = new DataGridView();
             clnID = new DataGridViewTextBoxColumn();
             cndNome = new DataGridViewTextBoxColumn();
             clnEmail = new DataGridViewTextBoxColumn();
             cndSenha = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)DgvNiveis).BeginInit();
+            cmbNivel = new ComboBox();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
             // 
             // label3
@@ -66,12 +66,13 @@
             label4.TabIndex = 15;
             label4.Text = "&Nome";
             // 
-            // txtSigla
+            // txtEmail
             // 
-            txtSigla.Location = new Point(74, 79);
-            txtSigla.Name = "txtSigla";
-            txtSigla.Size = new Size(201, 23);
-            txtSigla.TabIndex = 14;
+            txtEmail.Location = new Point(74, 79);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(201, 23);
+            txtEmail.TabIndex = 14;
+            txtEmail.TextChanged += txtSigla_TextChanged;
             // 
             // txtNome
             // 
@@ -79,6 +80,7 @@
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(201, 23);
             txtNome.TabIndex = 13;
+            txtNome.TextChanged += txtNome_TextChanged;
             // 
             // txtID
             // 
@@ -97,6 +99,7 @@
             btnEditar.TabIndex = 11;
             btnEditar.Text = "&Editar";
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnCancelar
             // 
@@ -106,6 +109,7 @@
             btnCancelar.TabIndex = 10;
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnGravar
             // 
@@ -113,15 +117,17 @@
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(75, 23);
             btnGravar.TabIndex = 9;
-            btnGravar.Text = "&Salvar";
+            btnGravar.Text = "&Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
-            // textBox1
+            // txtSenha
             // 
-            textBox1.Location = new Point(74, 120);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(201, 23);
-            textBox1.TabIndex = 17;
+            txtSenha.Location = new Point(74, 120);
+            txtSenha.Name = "txtSenha";
+            txtSenha.Size = new Size(201, 23);
+            txtSenha.TabIndex = 17;
+            txtSenha.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
@@ -132,13 +138,6 @@
             label1.TabIndex = 18;
             label1.Text = "&Senha";
             // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(74, 162);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(201, 23);
-            textBox2.TabIndex = 19;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -148,19 +147,20 @@
             label2.TabIndex = 20;
             label2.Text = "Nive&l";
             // 
-            // DgvNiveis
+            // dgvUsuarios
             // 
-            DgvNiveis.AllowUserToAddRows = false;
-            DgvNiveis.AllowUserToDeleteRows = false;
-            DgvNiveis.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvNiveis.Columns.AddRange(new DataGridViewColumn[] { clnID, cndNome, clnEmail, cndSenha });
-            DgvNiveis.Location = new Point(281, 50);
-            DgvNiveis.Name = "DgvNiveis";
-            DgvNiveis.ReadOnly = true;
-            DgvNiveis.RowHeadersVisible = false;
-            DgvNiveis.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DgvNiveis.Size = new Size(392, 180);
-            DgvNiveis.TabIndex = 21;
+            dgvUsuarios.AllowUserToAddRows = false;
+            dgvUsuarios.AllowUserToDeleteRows = false;
+            dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { clnID, cndNome, clnEmail, cndSenha });
+            dgvUsuarios.Location = new Point(291, 50);
+            dgvUsuarios.Name = "dgvUsuarios";
+            dgvUsuarios.ReadOnly = true;
+            dgvUsuarios.RowHeadersVisible = false;
+            dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUsuarios.Size = new Size(392, 180);
+            dgvUsuarios.TabIndex = 21;
+            dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
             // 
             // clnID
             // 
@@ -193,19 +193,28 @@
             cndSenha.Name = "cndSenha";
             cndSenha.ReadOnly = true;
             // 
+            // cmbNivel
+            // 
+            cmbNivel.FormattingEnabled = true;
+            cmbNivel.Location = new Point(74, 167);
+            cmbNivel.Name = "cmbNivel";
+            cmbNivel.Size = new Size(163, 23);
+            cmbNivel.TabIndex = 22;
+            cmbNivel.SelectedIndexChanged += cmbNivel_SelectedIndexChanged;
+            // 
             // FrmUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(DgvNiveis);
+            Controls.Add(cmbNivel);
+            Controls.Add(dgvUsuarios);
             Controls.Add(label2);
-            Controls.Add(textBox2);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(txtSenha);
             Controls.Add(label3);
             Controls.Add(label4);
-            Controls.Add(txtSigla);
+            Controls.Add(txtEmail);
             Controls.Add(txtNome);
             Controls.Add(txtID);
             Controls.Add(btnEditar);
@@ -214,7 +223,7 @@
             Name = "FrmUsuario";
             Text = "FrmUsuario";
             Load += FrmUsuario_Load;
-            ((System.ComponentModel.ISupportInitialize)DgvNiveis).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -223,20 +232,20 @@
 
         private Label label3;
         private Label label4;
-        private TextBox txtSigla;
+        private TextBox txtEmail;
         private TextBox txtNome;
         private TextBox txtID;
         private Button btnEditar;
         private Button btnCancelar;
         private Button btnGravar;
-        private TextBox textBox1;
+        private TextBox txtSenha;
         private Label label1;
-        private TextBox textBox2;
         private Label label2;
-        private DataGridView DgvNiveis;
+        private DataGridView dgvUsuarios;
         private DataGridViewTextBoxColumn clnID;
         private DataGridViewTextBoxColumn cndNome;
         private DataGridViewTextBoxColumn clnEmail;
         private DataGridViewTextBoxColumn cndSenha;
+        private ComboBox cmbNivel;
     }
 }
