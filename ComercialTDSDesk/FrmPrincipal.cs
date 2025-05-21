@@ -88,5 +88,10 @@ namespace ComercialTDSDesk
         {
             AssociaPanel(new FrmCategoria());
         }
+
+        private void pnlCentral_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
