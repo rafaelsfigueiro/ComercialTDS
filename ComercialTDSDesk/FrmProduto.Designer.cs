@@ -271,6 +271,8 @@
             Name = "FrmProduto";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro de Produto";
+            Load += FrmProduto_Load;
+            Enter += FrmProduto_Enter;
             ((System.ComponentModel.ISupportInitialize)nudValorUnit).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudEstoqueMinimo).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudClasseDesconto).EndInit();

@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-           
+
+        }
+        #endregion
     }
-    #endregion
 }

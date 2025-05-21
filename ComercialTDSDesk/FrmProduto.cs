@@ -39,22 +39,22 @@ namespace ComercialTDSDesk
             picImagem.Image.Save(ms, picImagem.Image.RawFormat);
             imgBytes = ms.ToArray();
 
-         
-             Produto = new(
-                txtCodBarras.Text,
-                txtDescricao.Text,
-                (Double)nudValorUnit.Value,
-                txtUnidadeVenda.Text,
-               Categoria.ObterPorId(Convert.ToInt32(cmbCategoria.SelectedValue)),
-                (double)nudEstoqueMinimo.Value,
-                (double)nudClasseDesconto.Value,
-                imgBytes
-               
-                );
+
+            Produto produto = new();
 
             produto.Inserir();
-            if (produto.> 0)
+            if (produto.Id > 0)
                 MessageBox.Show($"Produto {produto.Id}Gravado com Sucesso!");
+        }
+
+        private void FrmProduto_Enter(object sender, EventArgs e)
+        {
+            nudEstoqueMinimo.Select(0, 9);
+        }
+
+        private void FrmProduto_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

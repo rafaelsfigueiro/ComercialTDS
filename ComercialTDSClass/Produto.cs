@@ -114,33 +114,34 @@ public class Produto
         {
             Produto produto = new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from produto whre id = {id}";
+            cmd.CommandText = $"select * from produtos where id = {id}";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
                 produto = new(
-                    dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetString(2),
-                    dr.GetDouble(3),
-                    dr.GetString(4),
-                    Categoria.ObterPorId(dr.GetInt32(5)),
-                    dr.GetDouble(6),
-                    dr.GetDouble(7),
-                    (byte[])dr.GetValue(8), // cast objeto para matrix byte[]
-                    dr.GetDateTime(9),
-                    dr.GetBoolean(10)
-                    );
+                        dr.GetInt32(0),
+                        dr.GetString(1),
+                        dr.GetString(2),
+                        dr.GetDouble(3),
+                        dr.GetString(4),
+                        Categoria.ObterPorId(dr.GetInt32(5)),
+                        dr.GetDouble(6),
+                        dr.GetDouble(7),
+                        (byte[])dr.GetValue(8),// cast objeto para  matriz byte[]
+                        dr.GetDateTime(9),
+                        dr.GetBoolean(10)
+                );
             }
             dr.Close();
             cmd.Connection.Close();
             return produto;
+
         }
-        public static List<Produto> ObterLista(int id)
+        public static List<Produto> ObterLista()
         {
             List<Produto> produtos= new();
             var cmd = Banco.Abrir();
-            cmd.CommandText = $"select * from produto whre id = {id}";
+            cmd.CommandText = $"select * from produtos order by descricao";
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
