@@ -8,5 +8,6 @@ namespace ComercialTDSClass
 {
     class Estoque
     {
+
     }
 }

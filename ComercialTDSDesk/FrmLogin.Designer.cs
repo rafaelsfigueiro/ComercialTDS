@@ -74,7 +74,7 @@
             txtSenha.PlaceholderText = "Senha";
             txtSenha.Size = new Size(220, 23);
             txtSenha.TabIndex = 3;
-            txtSenha.Text = "123";
+            txtSenha.Text = "1234";
             txtSenha.UseSystemPasswordChar = true;
             txtSenha.TextChanged += textBox2_TextChanged;
             // 

@@ -7,27 +7,24 @@ namespace ComercialTDSClass
 {
     public static class Banco
     {
-        public static string? Strconn { get; set; }
-
-        public static MySqlCommand Abrir(String strconn = "")
+        public static string StrConn { get; set; }
+        public static MySqlCommand Abrir(string strconn = "")
         {
             MySqlCommand cmd = new();
-            Strconn = Strconn;
-            if(Strconn ==string.Empty)
-            Strconn = $@"server=localhost;database = comercialtdsdb01;user=root;password=";// caminho do server
-            MySqlConnection cn = new(Strconn);
-            //cn.connectionString = strconn;
+            StrConn = strconn;
+
+            if (StrConn == string.Empty)
+                StrConn = $@"server=localhost;database=comercialtdsdb01;user=root;password=";
+            MySqlConnection cn = new(StrConn);
+            //cn.ConnectionString = Strconn;
             try
             {
-                cn.Open(); //ao paasar por aqui terá uma conezão aberta
+                cn.Open();// ao passar por aqui terá uma connexão aberta
                 cmd.Connection = cn;
-
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                
-                
             }
             return cmd;
 

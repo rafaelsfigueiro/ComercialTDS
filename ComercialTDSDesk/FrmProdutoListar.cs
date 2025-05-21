@@ -43,7 +43,7 @@ namespace ComercialTDSDesk
 
         private void dgvProduto_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var produto = new Produto.ObterPorId(Convert.ToInt32(dgvProduto.Rows[dgvProduto.CurrentRow.Index].Cells[0].Value));
+            var produto = Produto.ObterPorId(Convert.ToInt32(dgvProduto.Rows[dgvProduto.CurrentRow.Index].Cells[0].Value));
             using (MemoryStream ms = new MemoryStream(produto.Imagem))
             { 
              picImagem.Image = Image.FromStream(ms);

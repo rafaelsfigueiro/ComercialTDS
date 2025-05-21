@@ -36,6 +36,7 @@ namespace ComercialTDSDesk
             Program.UsuarioLogado = Usuario.EfatuarLogin(txtEmail.Text, txtSenha.Text);
             Close();
 
+
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
