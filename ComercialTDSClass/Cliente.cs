@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ComercialTDSClass;
 
-class Cliente
+public class Cliente
 {
 
 
@@ -18,10 +18,20 @@ class Cliente
     public string? Telefone { get; set; }
     public string? Email { get; set; }
     public DateTime DataNascimento { get; set; }
-    public DateTime DataCard { get; set; }
+    public DateTime DataCadastro { get; set; }
     public bool Ativo { get; set; }
+    public List<Endereco>? Enderecos { get; set; } = new List<Endereco>();
+    public Cliente() { }
 
-    public Cliente(int id, string? nome, string? cpf, string? telefone, string? email, DateTime dataNascimento, DateTime dataCard, bool ativo)
+    public Cliente(string nome, string cpf, string telefone, string email, DateTime dataNascimento, DateTime dataCadastro, bool ativo, List<Endereco>? enderecos)
+    {// este é o construtor que utilizaremos para inserir o cliente
+        Nome = nome;
+        Cpf = cpf;
+        Telefone = telefone;
+        Email = email;
+        DataNascimento = dataNascimento;
+    }
+    public Cliente(int id, string nome, string cpf, string telefone, string email, DateTime dataNascimento, DateTime dataCadastro, bool ativo, List<Endereco>? enderecos)
     {
         Id = id;
         Nome = nome;
@@ -29,20 +39,34 @@ class Cliente
         Telefone = telefone;
         Email = email;
         DataNascimento = dataNascimento;
-        DataCard = dataCard;
+        DataCadastro = dataCadastro;
         Ativo = ativo;
+        Enderecos = enderecos;
     }
-    public Cliente(string? nome, string? cpf, string? telefone, string? email, DateTime dataNascimento)
+    public Cliente(int id, string nome, string cpf, string telefone, string email, DateTime dataNascimento, DateTime dataCadastro, bool ativo)
     {
-
+        Id = id;
         Nome = nome;
         Cpf = cpf;
         Telefone = telefone;
         Email = email;
         DataNascimento = dataNascimento;
-
-
+        DataCadastro = dataCadastro;
+        Ativo = ativo;
     }
+
+
+    public Cliente(string nome, string cpf, string telefone, string email, DateTime dataNascimento)
+    {// este é o construtor que utilizaremos para inserir o cliente
+        Nome = nome;
+        Cpf = cpf;
+        Telefone = telefone;
+        Email = email;
+        DataNascimento = dataNascimento;
+    }
+
+
+
     public void Inserir()
     {
         // Implementar lógica para inserir cliente no banco de dados
@@ -73,33 +97,36 @@ class Cliente
         cmd.ExecuteNonQuery();
         cmd.Connection.Close();
     }
-    public static List<Endereco> ObterLista()
+    public static List<Cliente> ObterLista()
     {
-        List<Endereco> enderecos = new();
+        List<Cliente> clientes = new();
         var cmd = Banco.Abrir();
-        cmd.CommandText = $"select * from enderecos";
+        cmd.CommandText = $"select * from clientes order by nome";
         var dr = cmd.ExecuteReader();
         while (dr.Read())
         {
-            enderecos.Add(new(dr.GetInt32(0),
-                        dr.GetInt32(1),
-                        dr.GetInt32(2),
+            clientes.Add(new(
+                          dr.GetInt32(0),
+                        dr.GetString(1),
+                        dr.GetString(2),
                         dr.GetString(3),
-                        dr.GetInt32(4),
-                        dr.GetString(5),
-                        dr.GetString(6),
-                        dr.GetString(7),
-                        dr.GetString(8),
-                        dr.GetString(9)
-                        )
-                );
+                        dr.GetString(4),
+                        dr.GetDateTime(4),
+                        dr.GetDateTime(5),
+                        dr.GetBoolean(6),
+                        Endereco.ObterListaPorClienteId(dr.GetInt32(0))
+                    )
+            );
+           
         }
-        return enderecos;
-
-
-
+        dr.Close(); // Fechar o dr para abrir um novo select ou comando de banco
+        cmd.Connection.Close(); // fechar a conexão
+        return clientes;
     }
-    public static List<Endereco> ObterListaPostCLienteID(int idCliente)
+        
+        
+
+    public static List<Endereco> ObterPorId(int idCliente)
     {
         List<Endereco> enderecos = new();
         var cmd = Banco.Abrir();

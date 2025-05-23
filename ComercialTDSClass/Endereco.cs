@@ -11,7 +11,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ComercialTDSClass
 {
-    class Endereco
+  public  class Endereco
     {
 
 
