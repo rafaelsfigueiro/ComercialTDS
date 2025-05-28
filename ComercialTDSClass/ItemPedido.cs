@@ -56,7 +56,7 @@ namespace ComercialTDSClass
             }
             cmd.Connection.Close();
         }
-        public void Inserir()
+        public  void Inserir()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;

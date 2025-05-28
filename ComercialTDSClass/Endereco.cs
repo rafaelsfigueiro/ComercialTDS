@@ -116,7 +116,7 @@ namespace ComercialTDSClass
             cmd.Connection.Close();
         }
 
-        public List<Endereco> ObterListaPorClienteId(int idCliente)
+        public static List<Endereco> ObterListaPorClienteId(int idCliente)
         {
             List<Endereco> enderecos = new();
 

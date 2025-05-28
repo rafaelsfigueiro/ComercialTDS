@@ -114,10 +114,10 @@ public class Cliente
                         dr.GetDateTime(4),
                         dr.GetDateTime(5),
                         dr.GetBoolean(6),
-                        Endereco.ObterListaPorClienteId(dr.GetInt32(0))
+                       Endereco.ObterListaPorClienteId(dr.GetInt32(0))
                     )
             );
-           
+          
         }
         dr.Close(); // Fechar o dr para abrir um novo select ou comando de banco
         cmd.Connection.Close(); // fechar a conexão
@@ -126,28 +126,29 @@ public class Cliente
         
         
 
-    public static List<Endereco> ObterPorId(int idCliente)
+    public static Cliente ObterPorId(int id)
     {
-        List<Endereco> enderecos = new();
+       Cliente cliente = new();
         var cmd = Banco.Abrir();
-        cmd.CommandText = $"select * from enderecos where id = {idCliente}";
+        cmd.CommandText = $"select * from clientes where id = {id}";
         var dr = cmd.ExecuteReader();
         while (dr.Read())
         {
-            enderecos.Add(new(dr.GetInt32(0),
-                        dr.GetInt32(1),
-                        dr.GetInt32(2),
-                        dr.GetString(3),
-                        dr.GetInt32(4),
-                        dr.GetString(5),
-                        dr.GetString(6),
-                        dr.GetString(7),
-                        dr.GetString(8),
-                        dr.GetString(9)
-                        )
-                );
+            cliente = new(
+                             dr.GetInt32(0),
+                             dr.GetString(1),
+                             dr.GetString(2),
+                             dr.GetString(3),
+                             dr.GetString(4),
+                             dr.GetDateTime(4),
+                             dr.GetDateTime(5),
+                             dr.GetBoolean(6),
+                             Endereco.ObterListaPorClienteId(dr.GetInt32(0))
+                 );
         }
-        return enderecos;
+        dr.Close(); // Fechar o dr para abrir um novo select ou comando de banco
+        cmd.Connection.Close();
+        return cliente;
     }
 
 }

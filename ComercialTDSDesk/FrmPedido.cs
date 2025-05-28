@@ -42,6 +42,34 @@ namespace ComercialTDSDesk
 
             }
         }
+        private void CarregarItens(int pedidoId)
+        {
+            var itens = ItemPedido.ObterListaPorPedidoId(pedidoId);
+            dgvItensPedido.Rows.Clear();
+            int linha = 0;
+            double subTotal = 0;
+            double descontos = 0;
+            foreach (var item in itens)
+            {
+                dgvItensPedido.Rows.Add();
+                dgvItensPedido.Rows[linha].Cells[0].Value = $"#{(linha + 1).ToString().PadLeft(2, '0')}"; // Formata o número do item
+                dgvItensPedido.Rows[linha].Cells[1].Value = item.Produto.CodBarras; // Código de barras do produto
+                dgvItensPedido.Rows[linha].Cells[2].Value = item.Produto.Descricao; // Descrição do produto
+                dgvItensPedido.Rows[linha].Cells[3].Value = item.ValorUnit; // Valor unitário do produto
+                dgvItensPedido.Rows[linha].Cells[4].Value = item.Quantidade; // Quantidade do produto
+                dgvItensPedido.Rows[linha].Cells[5].Value = item.Desconto; // Desconto aplicado ao item
+                descontos += item.Desconto; // Acumula o total de descontos
+                double totalItem = item.ValorUnit * item.Quantidade - item.Desconto; // Calcula o total do item
+                dgvItensPedido.Rows[linha].Cells[6].Value = totalItem; // Total do item
+                subTotal += totalItem; // Acumula o subtotal
+                linha++;
+            }
+            txtSubTotalItens.Text = subTotal.ToString(); // Exibe o subtotal formatado
+            txtSubTotal.Text = subTotal.ToString(); // Exibe o subtotal formatado
+            txtDescontoItem.Text = descontos.ToString(); // Exibe o total de descontos formatado
+            txtTotal.Text = subTotal.ToString(); // Exibe o total final formatado
+
+        }
 
         private void txtNomeCliente_TextChanged(object sender, EventArgs e)
         {
@@ -72,25 +100,26 @@ namespace ComercialTDSDesk
 
         private void txtCodBar_TextChanged(object sender, EventArgs e)
         {
-            var produto = Produto.ObterPorCodBar(txtCodBar.Text);
+            if (txtCodBar.Text.Length > 6)
+            {
+                var produto = Produto.ObterPorCodBar(txtCodBar.Text);
+                if (produto.Id == 0)
+                {
+                    produto = Produto.ObterPorId(int.Parse(txtCodBar.Text));
+
+                }
+                txtIdProd.Text = produto.Id.ToString();
+                txtDescricao.Text = produto.Descricao;
+                txtValorUnit.Text = produto.ValorUnit.ToString("R$##.00");
+                label4.Text = $"R${produto.ValorUnit * produto.ClasseDesconto}";
+
+            }
 
         }
 
         private void txtDescricao_TextChanged(object sender, EventArgs e)
         {
-            if (txtCodBar.Text.Length > 6)
-            {
-                var produto = Produto.ObterPorCodBar(txtCodBar.Text);
-                if (produto.Id > 0)
-                {
-                    produto = Produto.ObterPorId(int.Parse(txtCodBar.Text));
-
-                }
-                txtDescricao.Text = produto.Descricao;
-                txtValorUnit.Text = produto.ValorUnit.ToString("R$ ##.00");
-                label4.Text = $"R${produto.ValorUnit * produto.ClasseDesconto}";
-
-            }
+            
         }
 
         private void txtIdProd_TextChanged(object sender, EventArgs e)
@@ -108,18 +137,19 @@ namespace ComercialTDSDesk
                 double.Parse(txtDescontoItem.Text)
 
            );
-            ItemPedido.Inserir();
+            itemPedido.Inserir();
             if (itemPedido.Id > 0)
             {
-                CarregarItems();
+                CarregarItems(int.Parse(txtIdPedido.Text));
             }
+        }
             private void CarregarItems(int pedidoID)
             {
                 var Itens = ItemPedido.ObterListaPorPedidoId(pedidoID);
                 dgvItensPedido.Rows.Clear();
                 int linha = 0;
-                double subTotal, descontos = 0;
-                double desconto = 0;
+                double subTotal = 0;
+                double descontos = 0;
 
                 foreach (var item in Itens)
                 {
@@ -130,9 +160,9 @@ namespace ComercialTDSDesk
                     dgvItensPedido.Rows[linha].Cells[3].Value = item.ValorUnit;
                     dgvItensPedido.Rows[linha].Cells[4].Value = item.Quantidade;
                     dgvItensPedido.Rows[linha].Cells[5].Value = item.Desconto;
-                    descontos = +item.Desconto;
+                    descontos += item.Desconto;
                     double totalItem = item.ValorUnit * item.Quantidade - item.Desconto;
-                    dgvItensPedido.Rows[linha].Cells[6].Value = item.ValorUnit * item.Quantidade - item.Desconto;
+                    dgvItensPedido.Rows[linha].Cells[6].Value =totalItem;
                     subTotal += totalItem; // subTotal = SubTotal + totalItem;
                     linha++;
                 }
@@ -141,7 +171,8 @@ namespace ComercialTDSDesk
                 txtDescontoItem.Text = descontos.ToString();
                 txtTotal.Text = (subTotal - descontos).ToString();
             }
-        }
+        
+        
 
         private void txtIdPedido_KeyDown(object sender, KeyEventArgs e)
         {
@@ -149,7 +180,7 @@ namespace ComercialTDSDesk
             if (e.KeyCode == Keys.Enter)
             {
                 var pedido = Pedido.ObterPorId(int.Parse(txtIdPedido.Text));
-                if (pedido.Id > 0 && pedido.Status == "A")
+                if (pedido.Id > 0 )
                 {
                     if (pedido.Status == "A")
                     {
@@ -190,15 +221,17 @@ namespace ComercialTDSDesk
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            Pedido pedido = Pedido.ObterPorId(int.Parse(txtDescontoPedido.Text));
+            Pedido pedido = Pedido.ObterPorId(int.Parse(txtIdPedido.Text));
             pedido.Desconto = Double.Parse(txtDescontoPedido.Text);
-            Pedido.Status = "F"; // Fechar o pedido
+            pedido.Status = "F"; // Fechar o pedido
             if (pedido.Atualizar())
             { 
               MessageBox.Show($"Pedido{pedido.Id} foi fechado com sucesso.\n");
                 
                 dgvItensPedido.Rows.Clear();
-                txtIdPedido
+                txtIdPedido.Clear();
+                txtIdPedido.Focus();
+                // Limpa os campos do formulário
 
             }
 
