@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace ComercialTDSDesk
 {
-    public partial class ClienteEndereco: Form
+    public partial class FrmClienteEndereco : Form
     {
-        public ClienteEndereco()
+        public FrmClienteEndereco()
         {
             InitializeComponent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
