@@ -93,5 +93,10 @@ namespace ComercialTDSDesk
         {
 
         }
+
+        private void novoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AssociaPanel(new FrmPedido());
+        }
     }
 }

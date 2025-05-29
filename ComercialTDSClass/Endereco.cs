@@ -11,7 +11,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ComercialTDSClass
 {
-    class Endereco
+  public  class Endereco
     {
 
 
@@ -116,7 +116,7 @@ namespace ComercialTDSClass
             cmd.Connection.Close();
         }
 
-        public List<Endereco> ObterListaPorClienteId(int idCliente)
+        public static List<Endereco> ObterListaPorClienteId(int idCliente)
         {
             List<Endereco> enderecos = new();
 
